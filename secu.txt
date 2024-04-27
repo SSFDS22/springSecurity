@@ -1,0 +1,21 @@
+En java le servlet permet de convertir le message HTTP en objet java et inversement
+le filter permet d'intercepter le requets ou repsonse
+Par default il utilise les cookies qui sont envoyés à chaque requet
+Le cinematique de spring security ( on peut fournir plusieurs provider à l'authent)
+first AuthorisationFilter ( restrict access to url the user want to access methode doFilter) ->
+DefaultLoginPageGenerantingFilter ( qui permet de construire la page de login methode generateLoginPageHtml) ->
+UserNamePasswordAuthentificationFilter ( permet de recuperer les information saisi user mdp  crée un UserNamePasswordAuthenficationToken  methode attentAuthentication) ->
+ProviderMananger ( qui va recup tous les provider d'auth method authenticate)  ->
+ DaoAuthentificationProvider ( le providerManager va appeler la methode authenticate defini ici) ->
+
+Pour customiser il suffit de definir des provider ( le provider manager continet un Encoder et userdetail Manager)
+
+SpringBootWebSecurityConfiguration ( methode defaultSecurityFilterChain defini le filterChain par default)
+
+UserDetailService -> UserDetailManager ( les providers fourni par spring security: InMemoryUserDetailManager , JdbcUserDetailsManager , LdapUserDetailsManager)
+
+Spring va loader avec le userName puis comparer le mdp
+
+
+
+
